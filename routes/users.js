@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
 });
 
 
-router.get('/register', function(req, res){
+router.get('/register', function(req, res, next){
 	pg.connect(conString, function(err, client, done) {
 		if(err) {
 			return console.error('error fetching client from pool', err);
@@ -42,12 +42,10 @@ router.get('/register', function(req, res){
 
 			if(err) {
 				console.log(err);
-				return res.send('error', err);
+				return next(new Error(err));
 			}
-			//console.log(result.rows[0].number);
-			//output: 1
 			client.end();
-			res.send('finished');
+			res.send('success');
 		});
 	});
 });
