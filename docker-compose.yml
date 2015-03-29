@@ -1,8 +1,6 @@
 web:
   build: .
   links:
-    - mongo
-  ports:
-    - "5432:5432"
+    - postgres
 mongo:
   image: postgres
