@@ -11,7 +11,7 @@ var addNewUser = "INSERT INTO users VALUES (10,'itai','gendler');";
 //Create the users table on start
 pg.connect(conString, function(err, client, done) {
 	if(err) {
-		return console.error('error fetching client from pool', err);
+		console.log('error fetching client from pool', err);
 	}
 	client.query(createTable, function(err) {
 		done();
@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 router.get('/register', function(req, res, next){
 	pg.connect(conString, function(err, client, done) {
 		if(err) {
-			return console.error('error fetching client from pool', err);
+			return next(new Error(err));
 		}
 		client.query(addNewUser, function(err, result) {
 			//call `done()` to release the client back to the pool
