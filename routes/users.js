@@ -3,8 +3,8 @@ var pg = require('pg');
 
 var router = express.Router();
 
-
-var conString = "postgres://postgres:postgres@192.168.59.103/postgres";
+console.log('postgres port:', process.env.DB_PORT_5432_TCP_ADDR);
+var conString = "postgres://postgres:postgres@" + process.env.DB_PORT_5432_TCP_ADDR +  "/postgres";
 var createTable = 'CREATE TABLE Users(PersonID int,LastName varchar(255),FirstName varchar(255));';
 var addNewUser = "INSERT INTO users VALUES (10,'itai','gendler');";
 
