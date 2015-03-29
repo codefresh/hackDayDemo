@@ -2,5 +2,5 @@ web:
   build: .
   links:
     - postgres
-mongo:
+postgres:
   image: postgres
