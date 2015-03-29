@@ -1,8 +1,5 @@
 web:
-  #extends:
-    #file: common.yml
-    #service: webapp
-  image: hackday_web_1
+  build: .
   ports:
     - "8000:3000"
   links:
