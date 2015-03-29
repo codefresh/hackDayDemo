@@ -1,5 +1,7 @@
 web:
   build: .
+  ports:
+    - 9000
   links:
     - db
 db:
